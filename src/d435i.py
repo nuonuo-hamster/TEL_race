@@ -1,4 +1,5 @@
-# pip install pyrealsense2
+# To run d435i.py in terminal, use " sudo /home/ical/.local/share/virtualenvs/2024_TEL-YxRACiM0/bin/python d435i.py "
+# 
 import pyrealsense2 as rs
 import numpy as np
 import cv2
@@ -53,7 +54,7 @@ def realsense_run(pipe):
                                 alpha = 0.5), cv2.COLORMAP_JET)
     
     color_image = cv2.transpose(color_image)
-    color_image = cv2.flip(color_image, flipCode=0)  # flipCode=1 means horizontal flip
+    color_image = cv2.flip(color_image, flipCode=1)  # flipCode=1 means horizontal flip
 
     yaw, pitch = get_yaw_pitch(accel_data)
     

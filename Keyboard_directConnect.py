@@ -45,7 +45,7 @@ def test():
     map_controller = [-100, 100]
     map_Movement = [-250, 250]
 
-    three_dimension_movement.serOpen(port = 'COM12', rate = 19200)
+    three_dimension_movement.serOpen(port = '/dev/ttyACM0', rate = 19200)
     car_move = car_move_wrap(map_controller, map_Movement)
 
     KBConfig = keyboard_detect.keyboard_config()
