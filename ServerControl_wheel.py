@@ -25,7 +25,7 @@ def control_arduino(msg):
     arduino.write(msg.encode())
 
 def start():
-
+    
     print(f"Listening for messages on {UDP_IP}:{UDP_PORT}")
 
     # 接收訊號並處理
