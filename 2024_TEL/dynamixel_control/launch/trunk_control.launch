@@ -1,0 +1,5 @@
+<launch>
+
+<node name="trunk" pkg="dynamixel_control" type="trunk_node" output="screen"/>
+
+</launch>

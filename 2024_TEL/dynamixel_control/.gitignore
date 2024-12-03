@@ -1,0 +1,12 @@
+build/*
+devel/*
+CMakeCache.txt
+CMakeFiles
+.cache/*
+# Temp file
+*.swp
+.catkin_workspace
+# Whitelist to keep the 'build' directory there.
+!/build/.gitkeep
+
+

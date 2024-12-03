@@ -1,0 +1,5 @@
+<launch>
+
+<node name="control" pkg="dynamixel_control" type="control_node" />
+
+</launch>

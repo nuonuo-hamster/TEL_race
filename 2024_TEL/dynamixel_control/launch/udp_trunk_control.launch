@@ -1,0 +1,5 @@
+<launch>
+
+<node name="udp_trunk" pkg="dynamixel_control" type="udp_trunk_node" />
+
+</launch>

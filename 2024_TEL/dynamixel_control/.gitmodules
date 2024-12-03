@@ -1,0 +1,3 @@
+[submodule "deps/dynamixel_lib"]
+	path = deps/dynamixel_lib
+	url = git@gitlab.ical.tw:b1065144/dynamixel_lib.git

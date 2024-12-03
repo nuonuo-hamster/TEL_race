@@ -1,0 +1,30 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/ical/yang/control_test/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/ical/yang/control_test/src/cv_bridge/include/**",
+        "/home/ical/yang/control_test/src/darknet_ros/darknet_ros/include/**",
+        "/home/ical/yang/control_test/src/ddynamic_reconfigure/include/**",
+        "/home/ical/yang/control_test/src/dynamixel_control/include/**",
+        "/home/ical/yang/control_test/src/first_stage/include/**",
+        "/home/ical/yang/control_test/src/gpio/include/**",
+        "/home/ical/yang/control_test/src/ground_color/include/**",
+        "/home/ical/yang/control_test/src/realsense-ros/realsense2_camera/include/**",
+        "/home/ical/yang/control_test/src/wheel_tokyo_weili/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

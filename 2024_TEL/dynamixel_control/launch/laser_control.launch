@@ -1,0 +1,5 @@
+<launch>
+
+<node name="laser_control" pkg="dynamixel_control" type="laser_control_node" />
+
+</launch>
