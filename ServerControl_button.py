@@ -10,7 +10,12 @@ try:
     arduino = serial.Serial('/dev/ttyACM1', 9600, timeout=1)  
     time.sleep(1)  # 等待串口初始化
 except serial.SerialException as e:
-    print(f"Failed to connect to Arduino: {e}") 
+    try:
+        arduino = serial.Serial('/dev/ttyACM0', 9600, timeout=1)  
+        time.sleep(1)  # 等待串口初始化
+    except serial.SerialException as e:
+        print(f"Failed to connect to Arduino: {e}") 
+        exit(1)
 
 # 設定接收端 UDP 的 IP 和端口
 UDP_IP = "0.0.0.0"  # 接收來自任何 IP 的訊號
@@ -84,13 +89,12 @@ def start():
     # 接收訊號並處理
     while True:
         button_data, button_addr = sock.recvfrom(1024)  # 接收資料，最大長度為 1024 bytes
+
+        os.system("clear")
         print(f"Received message: {button_data.decode()} from {button_addr}")
 
         # 處理接收到的訊號並控制 Arduino
         thread = threading.Thread(target=control_arduino, args=(button_data.decode(),))
-
-        os.system("clear")
-
         thread.start()
 
 if __name__ == "__main__":
