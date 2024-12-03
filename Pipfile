@@ -6,8 +6,13 @@ name = "pypi"
 [packages]
 pyserial = "*"
 keyboard = "*"
+pygame = "*"
+pyrealsense2 = "*"
+numpy = "*"
+opencv-python = "*"
 
 [dev-packages]
+ipykernel = "*"
 
 [requires]
 python_version = "3.8"
