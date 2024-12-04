@@ -9,7 +9,7 @@ from src import d435i
 
 # 設定 arduino_servo 的串口
 try:
-    arduino_servo = serial.Serial('/dev/ttyACM1', 9600, timeout=1)  
+    arduino_servo = serial.Serial('/dev/ttyACM0', 9600, timeout=1)  
     arduino_launch = 0 #serial.Serial('/dev/ttyACM0', 28800, timeout=1)
     print("Arduino_servo successfully connected")
     print("Arduino_launch successfully connected")
