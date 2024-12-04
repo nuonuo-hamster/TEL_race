@@ -1,7 +1,17 @@
 import threading
 import time
 import socket
+import os
+import sys
 from src.controller_config import*
+
+def restart_program():
+    """重新啟動 Python 程式"""
+    print("正在重新啟動程式...")
+    time.sleep(2)  # 等待 1 秒鐘
+    python = sys.executable  # 取得當前 Python 解釋器
+    print("程式重啟完畢...")
+    os.execl(python, python, *sys.argv)  # 重新啟動當前程式
 
 def create_socket(server_ip, server_port):
 
@@ -80,15 +90,16 @@ def control_buttom(controller, client_socket, server_address):
                 time.sleep(0.1)
 
             elif buttons[RIGHT_STICK_BTN]:
-                print("Right stick pressed")
-                send_control_message(client_socket, server_address, message="exit")
+                print("Right stick pressed, restarting server on AGX")
+                send_control_message(client_socket, server_address, message="restart")
+                restart_program()
                 time.sleep(0.1)
                 break
 
             elif buttons[LEFT_STICK_BTN]:
                 print("Left stick pressed")
                 layer = 1
-                print("現在在第二層半自動操作")
+                print("現在搖桿在Layer1半自動操作")
                 time.sleep(0.1)
             time.sleep(0.1)
             
@@ -144,24 +155,25 @@ def control_buttom(controller, client_socket, server_address):
 
             elif right == 1:
                 print("Pad Right")
-                send_control_message(client_socket, server_address, message="c")
+                send_control_message(client_socket, server_address, message="e")
                 time.sleep(0.1)
 
             elif left == 1:
                 print("Pad Left")
-                send_control_message(client_socket, server_address, message="d")
+                send_control_message(client_socket, server_address, message="f")
                 time.sleep(0.1)
 
             elif buttons[RIGHT_STICK_BTN]:
-                print("Right stick pressed")
-                send_control_message(client_socket, server_address, message="exit")
+                print("Right stick pressed, restarting server on AGX")
+                send_control_message(client_socket, server_address, message="restart")
+                restart_program()
                 time.sleep(0.1)
                 break
 
             elif buttons[LEFT_STICK_BTN]:
                 print("Left stick pressed")
                 layer = 0
-                print("現在在第一層手動操作")
+                print("現在搖桿在Layer0手動操作")
                 time.sleep(0.1)
 
             time.sleep(0.1)
