@@ -35,7 +35,14 @@ def clientClose(client_socket):
     # 關閉 socket 連接
     client_socket.close()
 
-def test(ip='192.168.0.222', port=8888):
+def test(ip=None, port=7777):
+    # 從ip.txt拿ip
+    with open("./ip.txt", 'r') as file:
+        line = file.readline().strip()
+        if line.startswith("ip="):
+            ip = line.split('=')[1].strip("'")
+    if ip is None: return
+
     try:
         print(f"Connecting to server at {ip}:{port}...")
         client_socket = connectServer(ip, port)
@@ -73,4 +80,5 @@ def test(ip='192.168.0.222', port=8888):
         print(f"Error connecting to server: {e}")
 
 if __name__ == '__main__':
-    test(ip='192.168.0.222', port=7777)
+
+    test()

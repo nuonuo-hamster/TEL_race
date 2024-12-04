@@ -56,12 +56,19 @@ def control_rooler(controller, client_socket, server_address):
         time.sleep(0.1)
 
 def start():
+    # 從ip.txt拿ip
+    server_ip = None
+    with open("./ip.txt", 'r') as file:
+        line = file.readline().strip()
+        if line.startswith("ip="):
+            server_ip = line.split('=')[1].strip("'")
+    if server_ip is None: return
 
     controller_start()
     print("---------------------------")
 
     controller = Controller(dead_zone=0.15)
-    client_socket, server_address = create_socket(server_ip="192.168.0.222", server_port=9999)
+    client_socket, server_address = create_socket(server_ip, server_port=9999)
 
     thread = threading.Thread(target=control_rooler, args=(controller, client_socket, server_address))
     thread.start()
