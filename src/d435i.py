@@ -60,16 +60,22 @@ def realsense_run(pipe):
     
     return depth_frame, color_image, depth_cm, yaw, pitch
 
+def put_text(color_image, flag, info, dir_x, dir_y):
+    if flag == 1:
+        cv2.putText(color_image, f"Yaw: {info:.2f}", (dir_x, dir_y), cv2.FONT_HERSHEY_SIMPLEX, 
+                    0.6, (0, 255, 0), 2, cv2.LINE_AA)
+    elif flag == 2:
+        cv2.putText(color_image, f"Pitch: {info:.2f}", (dir_x, dir_y), cv2.FONT_HERSHEY_SIMPLEX, 
+                    0.6, (0, 255, 0), 2, cv2.LINE_AA)
+
 def main():
     pipe = realsense_init(width=640, height=480)
     
     while(True):
         depth_frame, color_image, depth_cm, yaw, pitch = realsense_run(pipe)
-
-        cv2.putText(color_image, f"Yaw: {yaw:.2f}", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 
-                    0.6, (0, 255, 0), 2, cv2.LINE_AA)
-        cv2.putText(color_image, f"Pitch: {pitch:.2f}", (10, 60), cv2.FONT_HERSHEY_SIMPLEX, 
-                    0.6, (0, 255, 0), 2, cv2.LINE_AA)
+        
+        put_text(color_image, 1, yaw, 10, 30)
+        put_text(color_image, 2, pitch, 10, 60)
         
         cv2.imshow('RGB Frame', color_image)
         if cv2.waitKey(1) == 27: # esc

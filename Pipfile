@@ -12,7 +12,7 @@ numpy = "*"
 opencv-python = "*"
 
 [dev-packages]
-ipykernel = "*"
+ipykernel = "*"                 
 
 [requires]
 python_version = "3.8"
