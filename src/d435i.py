@@ -4,11 +4,20 @@ import pyrealsense2 as rs
 import numpy as np
 import cv2
 import math
+import threading
 
-def realsense_init(width, height):
+def realsense_init(width, height, device_number=None):
 
     pipe = rs.pipeline()
     cfg  = rs.config()
+
+    ctx = rs.context()
+    devices = ctx.query_devices()
+
+    for device in devices:
+        if device.get_info(rs.camera_info.serial_number) == device_number:
+            cfg.enable_device(device_number)
+            break
 
     cfg.enable_stream(rs.stream.color, width,height, rs.format.bgr8, 30)
     cfg.enable_stream(rs.stream.depth, width,height, rs.format.z16, 30)
@@ -68,8 +77,10 @@ def put_text(color_image, flag, info, dir_x, dir_y):
         cv2.putText(color_image, f"Pitch: {info:.2f}", (dir_x, dir_y), cv2.FONT_HERSHEY_SIMPLEX, 
                     0.6, (0, 255, 0), 2, cv2.LINE_AA)
 
-def main():
-    pipe = realsense_init(width=640, height=480)
+def main(device_number=None):
+    width = 640
+    height = 480
+    pipe = realsense_init(width, height, device_number)
     
     while(True):
         depth_frame, color_image, depth_cm, yaw, pitch = realsense_run(pipe)
@@ -83,6 +94,8 @@ def main():
     
     cv2.destroyAllWindows()
     pipe.stop()
+
+
 
 if __name__ == '__main__':
     main()

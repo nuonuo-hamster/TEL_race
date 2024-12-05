@@ -4,6 +4,7 @@ echo "Executing Python scripts..."
 
 # d435i server
 # gnome-terminal -- bash -c "sudo /home/ical/.virtualenvs/TEL_race-FYbzsy1B/bin/python "/home/ical/Desktop/TEL_race/D435iServer.py"; echo 'press any key to exit...'; read"
+# gnome-terminal -- bash -c "sudo /home/ical/.virtualenvs/TEL_race-FYbzsy1B/bin/python "/home/ical/Desktop/TEL_race/src/d435i.py"; echo 'press any key to exit...'; read"
 # button server
 gnome-terminal -- bash -c "sudo /home/ical/.virtualenvs/TEL_race-FYbzsy1B/bin/python "/home/ical/Desktop/TEL_race/ServerControl_button.py"; echo 'press any key to exit...'; read"
 # wheel server

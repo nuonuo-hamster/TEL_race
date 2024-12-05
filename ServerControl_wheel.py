@@ -11,7 +11,7 @@ try:
     time.sleep(1)  # 等待串口初始化
 except serial.SerialException as e:
     try:
-        arduino = serial.Serial('/dev/ttyACM1', 19200, timeout=1)
+        # arduino = serial.Serial('/dev/ttyACM1', 19200, timeout=1)
         print("Arduino successfully connected")
         time.sleep(1)  # 等待串口初始化
     except serial.SerialException as e:
